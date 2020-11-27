@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/sprmn/react-firebase-file-uploader#readme",
   "peerDependencies": {
-    "firebase": "^3.5.2 || ^4.0.0 || ^5.0.0",
+    "firebase": "^7.6.1",
     "react": "^15.3.2 || ^16.0.0"
   },
   "devDependencies": {

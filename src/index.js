@@ -90,7 +90,7 @@ export default class FirebaseFileUploader extends Component<Props> {
       filenameToUse = typeof filename === 'function' ? filename(file) : filename;
     }
     else {
-      filenameToUse = randomizeFilename ? generateRandomFilename() : file.name;
+      filenameToUse = randomizeFilename ? generateRandomFilename() : file.name+'-'+Date.now();
     }
 
     // Ensure there is an extension in the filename
@@ -132,7 +132,7 @@ export default class FirebaseFileUploader extends Component<Props> {
             this.removeTask(task);
             return (
               onUploadSuccess &&
-              onUploadSuccess(task.snapshot.metadata.name, task)
+              onUploadSuccess(task.snapshot.ref, task)
             );
           }
         );
