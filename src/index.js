@@ -43,7 +43,7 @@ export type Props = {
   readOnly?: boolean,
   required?: boolean,
   value?: string,
-  multiple?: boolean
+  multiple?: boolean,
 };
 
 export default class FirebaseFileUploader extends Component<Props> {
@@ -87,7 +87,7 @@ export default class FirebaseFileUploader extends Component<Props> {
 
     let filenameToUse;
     if (filename) {
-      filenameToUse = typeof filename === 'function' ? filename(file) : filename;
+      filenameToUse = typeof filename === 'function' ? filename(file) : filename+'-'+Date.now();
     }
     else {
       filenameToUse = randomizeFilename ? generateRandomFilename() : file.name+'-'+Date.now();
