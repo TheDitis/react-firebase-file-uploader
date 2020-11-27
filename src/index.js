@@ -87,16 +87,19 @@ export default class FirebaseFileUploader extends Component<Props> {
 
     let filenameToUse;
     if (filename) {
-      filenameToUse = typeof filename === 'function' ? filename(file) : filename+'-'+Date.now();
+      filenameToUse = typeof filename === 'function' ? filename(file) : filename;
     }
     else {
-      filenameToUse = randomizeFilename ? generateRandomFilename() : file.name+'-'+Date.now();
+      filenameToUse = randomizeFilename ? generateRandomFilename() : file.name;
     }
 
     // Ensure there is an extension in the filename
     if (!extractExtension(filenameToUse)) {
       filenameToUse += extractExtension(file.name);
     }
+
+    const components = filenameToUse.match(/(.*)\.(.*)/);
+    filenameToUse = components[1]+'-'+Date.now()+'.'+components[2];
 
     Promise.resolve()
       .then(() => {
